@@ -1,6 +1,0 @@
-.box01 {
-  margin: 10px;
-  border: 10px solid cyan;
-  padding: 10px;
-  height: 100px;
-}

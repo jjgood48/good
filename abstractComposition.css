@@ -1,0 +1,106 @@
+/* ------row1------ */
+
+.box {
+  border: 5px solid black;
+  height: 100px;
+  display: inline-block;
+  width: 30%;
+  margin: -5px;
+}
+.box01{
+  background-color: red;
+  width: 35%;
+}
+
+/* ------row2------ */
+
+.box1 {
+  border: 5px solid black;
+  height: 250px;
+  display: inline-block;
+  width: 20%;
+  margin: -5px;
+}
+.box05{
+  background-color: blue;
+  width: 45%;
+}
+.box06{
+  background-color: yellow;
+  width: 10%
+}
+
+/* ------row3------ */
+
+.box2 {
+  border: 5px solid black;
+  height: 50px;
+  display: inline-block;
+  width: 10%;
+  margin: -5px;
+}
+.box09{
+  background-color: yellow;
+  width: 35%;
+}
+.box13{
+  background-color: red;
+  width: 20%;
+}
+
+/* ------row4------ */
+
+.box3 {
+  border: 5px solid black;
+  height: 250px;
+  display: inline-block;
+  width: 20%;
+  margin: -5px;
+}
+.box14{
+  background-color: red;
+  width: 20%;
+}
+.box15{
+  width: 55%;
+}
+
+/* ------row5------ */
+
+.box4 {
+  border: 5px solid black;
+  height: 125px;
+  display: inline-block;
+  width: 25%;
+  margin: -5px;
+}
+.box17{
+  width: 5%;
+}
+.box18{
+  width: 40%;
+}
+.box19{
+  width: 25%;
+  background-color: blue;
+}
+
+/* ------row3------ */
+
+.box5 {
+  border: 5px solid black;
+  height: 80px;
+  display: inline-block;
+  width: 10%;
+  margin: -5px;
+}
+.box21{
+  background-color: yellow;
+}
+.box22{
+  width: 40%;
+}
+.box26{
+  background-color: red;
+  width: 15%;
+}

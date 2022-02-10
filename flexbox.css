@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+}
+
+.row1 {
+  display: flex;
+  flex-flow: row;
+  flex: .4;
+}
+
+.row2 {
+  display: flex;
+  flex-flow: row;
+  flex: .15;
+}
+
+.row3 {
+  display: flex;
+  flex-flow: row;
+  flex: 1;
+}
+
+.row4 {
+  display: flex;
+  flex-flow: row;
+  flex: 1;
+}
+
+.row5 {
+  display: flex;
+  flex-flow: row;
+  flex: 1;
+}
+
+.row6 {
+  display: flex;
+  flex-flow: row;
+  flex: 1;
+}
+
+.row7 {
+  display: flex;
+  flex-flow: row;
+  flex: 1;
+}
+
+.header {
+  background-image: linear-gradient(to bottom right, #ffccd5 , #ff8095, darkmagenta);
+  flex: 1;
+  color: white;
+  text-align: center;
+  font-size: 100px;
+  font-family: tomarik-display-line, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  padding-top: 20px;
+}
+
+.days {
+  background-color: darkmagenta;
+  flex: 1;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  font-family: tomarik-display, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  padding-top: 7px;
+}
+
+.box {
+  background-color: #ffccd5;
+  flex: 1;
+  border: 2px solid darkmagenta;
+  padding: 6px;
+  color: darkmagenta;
+  font-family: poppins, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+}
+
+.box_special {
+  background-color: #ff8095;
+  flex: 1;
+  border: 2px solid darkmagenta;
+  padding: 6px;
+  color: darkmagenta;
+  font-family: poppins, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+}
+
+.text_special {
+  padding: 10px;
+  text-align: center;
+  color: white;
+  font-family: poppins, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 26px;
+}
+
+.box_weekend {
+  background-color: #ffb3bf;
+  flex: 1;
+  border: 2px solid darkmagenta;
+  padding: 6px;
+  color: darkmagenta;
+  font-family: poppins, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+}
+
+.box_none {
+  background-color: white;
+  flex: 1;
+  border: 2px solid darkmagenta;
+  padding: 6px;
+  color: darkmagenta;
+  font-family: poppins, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+}

@@ -1,0 +1,73 @@
+body {
+  background-color: #722f37;
+  color: blue;
+  font-size: 20px;
+}
+
+.textCurve {
+  font-size: 26px;
+  font-family: mixta-sharp, serif;
+  font-weight: 700;
+  font-style: normal;
+  margin-top: 350px;
+}
+
+.winebot {
+  height: 400px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+path {
+  fill: transparent;
+  position: 500px;
+}
+
+.slice {
+  fill: #e9d9c1;
+}
+
+.textCurve text {
+  fill: white;
+  font-family: mixta-sharp, serif;
+  pointer-events:none;
+}
+
+#chart{
+    position:absolute;
+    width:1000px;
+    height:200px;
+    top:600px;
+    left:560px;
+}
+  #question{
+    position: absolute;
+    width:800px;
+    height:500px;
+    top:0;
+    left:550px;
+}
+  #question h1{
+    font-size: 24px;
+    font-weight: bold;
+    font-family: mixta-sharp, serif;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top:50%;
+    -webkit-transform:translate(0,-50%);
+    transform:translate(0,-50%);
+    color: #fedf97;
+    }
+
+  #label {
+    font-size: 18px;
+    color: white;
+    font-family: mixta-sharp, serif;
+    font-weight: 400;
+  }
+
+body {
+  cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍷</text></svg>") 16 0,auto; /*!emojicursor.app*/
+}

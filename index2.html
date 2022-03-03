@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Wine Conversation</title>
+  <link rel="icon" type="image/x-icon" href="favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device,initial-scale=1.0">
+  <link rel="stylesheet" href="styles2.css">
+  <link rel="stylesheet" href="https://use.typekit.net/yyy2ier.css">
+  <link rel="icon" type="image/x-icon" href="https://www.pngitem.com/pimgs/m/512-5123769_clipart-glasses-mickey-silhouette-wine-glass-clipart-hd.png">
+</head>
+
+<body>
+
+  <img class="winebot" src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/38731/wine-grape-drink-clipart-xl.png" alt="wine bottle">
+  <div class="textCurve">
+    <svg viewBox="0 0 500 200">
+      <path id="curve" d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97" />
+      <text width="500">
+        <textPath xlink:href="#curve">
+          Click the Wheel for a Wine Descriptor
+        </textPath>
+      </text>
+    </svg>
+  </div>
+
+  <div id="canvas">
+    <span class="circle"></span>
+  </div>
+
+</head>
+<body>
+<div id="chart"></div>
+<div id="question"><h1></h1></div>
+
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+    var padding = {top:20, right:40, bottom:0, left:0},
+        w = 500 - padding.left - padding.right,
+        h = 500 - padding.top  - padding.bottom,
+        r = Math.min(w, h)/2,
+        rotation = 0,
+        oldrotation = 0,
+        picked = 100000,
+        oldpick = [],
+        color = d3.scale.category20();//category20c()
+        //randomNumbers = getRandomNumbers();
+
+    //http://osric.com/bingo-card-generator/?title=HTML+and+CSS+BINGO!&words=padding%2Cfont-family%2Ccolor%2Cfont-weight%2Cfont-size%2Cbackground-color%2Cnesting%2Cbottom%2Csans-serif%2Cperiod%2Cpound+sign%2C%EF%B9%A4body%EF%B9%A5%2C%EF%B9%A4ul%EF%B9%A5%2C%EF%B9%A4h1%EF%B9%A5%2Cmargin%2C%3C++%3E%2C{+}%2C%EF%B9%A4p%EF%B9%A5%2C%EF%B9%A4!DOCTYPE+html%EF%B9%A5%2C%EF%B9%A4head%EF%B9%A5%2Ccolon%2C%EF%B9%A4style%EF%B9%A5%2C.html%2CHTML%2CCSS%2CJavaScript%2Cborder&freespace=true&freespaceValue=Web+Design+Master&freespaceRandom=false&width=5&height=5&number=35#results
+
+    var data = [
+                {"label":"Oak",  "value":1,  "question":"Chardonnay: Hrmm this one smells a lot like wood, maybe oaky. It also smells a little sweet. Could be some honey maybe? Oh yeah definitely smells like oak. I know chardonnays from around here smell like that often. I smell a little sweet but not too much. I also could maybe be getting some floral or fruit? No I’m not getting any floral. I’m thinking maybe apple or pear though. Lets try it now. Okay!.. Okay definitely getting a lot of oak and I see the buttery that is described a lot for chardonnay. The taste is super powerful and a little dry. Yeah, its not bad. I am also getting the oak. I also see the honey and for sure some apple tastes."},
+                {"label":"Cherry",  "value":1,  "question":"Merlot: Ready to sniff and swirl? Yes! This one smells pretty fruity, like black cherry. Yeah I know Merlot’s usually smell like cherry so that would make sense. I am also getting some darkness like cocoa or herbs? Let’s taste it. Oh yeah its super dry and dark and strong tastes of the black cherry. I like it, but I definitely couldn’t drink it fast and a whole bottle of it. I am for sure getting the cherry and possibly bay leaf as well."},
+                {"label":"Apple",  "value":1,  "question":"Pinot Grigio: Lets try this white wine. Oh the smell is very fruity like a pear or apple. They go well with each other and are pretty similar so it is hard to tell which one. I’m getting some green apple but also pretty sweet like a fruit. Maybe some notes of honey. Let’s taste it. The taste is very apple still. I see the green apple like Granny Smith. I like the sweetness of it with the fruits and honey. Yeah its dry but works well still because it is pretty sweet."},
+                {"label":"Cream",  "value":1,  "question":"Rose: This is a Spanish rosado. What does it smell like? Oh woah, I am getting some yogurt smells. Like creamy. Oh yeah I definitely smell cream also and can see where youre getting the yogurt from. Do you have any other smells? Maybe a hint of fruit like peach? Let’s try it. Oh it tastes so much like yogurt. Very creamy wine. I also get some butter with in but not much."},
+                {"label":"Floral",  "value":1,  "question":"Viognier: Time to try some Viognier. I’m gonna sniff it first. Okay, it smells super floral-like. I’m not sure which flower though. I think it could be apple blossoms, but I am not sure. Flowers kind of all smell the same. That’s okay. Apple blossoms sounds right. Let’s taste it. Oh yeah, this wine is super floraly when tasting too. I can maybe see rose or apple blossoms. It’s pretty good but the floral might be too strong for me. Oh I really like it. I could definitely drink this more."},
+                {"label":"Spice",  "value":1,  "question":"Syrah: Alright, sniff and swirl first. Ooh I am getting a lot of spice in this one. I can’t tell what it would be. I think possibly pepper? Yeah that sounds right. I also smell black currant or something else as well. This wine is very strong. Yeah I see that. Now to taste it. Okay, this tastes pretty similar to what it smelt like. The spices are really strong. I think it could be black peppercorns like we mentioned."},
+    ];
+
+
+    var svg = d3.select('#chart')
+        .append("svg")
+        .data([data])
+        .attr("width",  w + padding.left + padding.right)
+        .attr("height", h + padding.top + padding.bottom);
+
+    var container = svg.append("g")
+        .attr("class", "chartholder")
+        .attr("transform", "translate(" + (w/2 + padding.left) + "," + (h/2 + padding.top) + ")");
+
+    var vis = container
+        .append("g");
+
+    var pie = d3.layout.pie().sort(null).value(function(d){return 1;});
+
+    // declare an arc generator function
+    var arc = d3.svg.arc().outerRadius(r);
+
+    // select paths, use arc generator to draw
+    var arcs = vis.selectAll("g.slice")
+        .data(pie)
+        .enter()
+        .append("g")
+        .attr("class", "slice");
+
+
+    arcs.append("path")
+        .attr("fill", function(d, i){ return color(i); })
+        .attr("d", function (d) { return arc(d); });
+
+    // add the text
+    arcs.append("text").attr("transform", function(d){
+            d.innerRadius = 0;
+            d.outerRadius = r;
+            d.angle = (d.startAngle + d.endAngle)/2;
+            return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")translate(" + (d.outerRadius -10) +")";
+        })
+        .attr("text-anchor", "end")
+        .text( function(d, i) {
+            return data[i].label;
+        });
+
+    container.on("click", spin);
+
+
+    function spin(d){
+
+        container.on("click", null);
+
+        //all slices have been seen, all done
+        console.log("OldPick: " + oldpick.length, "Data length: " + data.length);
+        if(oldpick.length == data.length){
+            console.log("done");
+            container.on("click", null);
+            return;
+        }
+
+        var  ps       = 360/data.length,
+             pieslice = Math.round(1440/data.length),
+             rng      = Math.floor((Math.random() * 1440) + 360);
+
+        rotation = (Math.round(rng / ps) * ps);
+
+        picked = Math.round(data.length - (rotation % 360)/ps);
+        picked = picked >= data.length ? (picked % data.length) : picked;
+
+
+        if(oldpick.indexOf(picked) !== -1){
+            d3.select(this).call(spin);
+            return;
+        } else {
+            oldpick.push(picked);
+        }
+
+        rotation += 90 - Math.round(ps/2);
+
+        vis.transition()
+            .duration(3000)
+            .attrTween("transform", rotTween)
+            .each("end", function(){
+
+                //mark question as seen
+                d3.select(".slice:nth-child(" + (picked + 1) + ") path")
+                    .attr("fill", "#111");
+
+                //populate question
+                d3.select("#question h1")
+                    .text(data[picked].question);
+
+                oldrotation = rotation;
+
+                container.on("click", spin);
+            });
+    }
+
+    //make arrow
+    svg.append("g")
+        .attr("transform", "translate(" + (w + padding.left + padding.right) + "," + ((h/2)+padding.top) + ")")
+        .append("path")
+        .attr("d", "M-" + (r*.15) + ",0L0," + (r*.05) + "L0,-" + (r*.05) + "Z")
+        .style({"fill":"#fedf97"});
+
+    //draw spin circle
+    container.append("circle")
+        .attr("cx", 0)
+        .attr("cy", 0)
+        .attr("r", 60)
+        .style({"fill":"white","cursor":"pointer"});
+
+    //spin text
+    container.append("text")
+        .attr("x", 0)
+        .attr("y", 15)
+        .attr("text-anchor", "middle")
+        .text("SPIN")
+        .style({"font-weight":"bold", "font-size":"30px", "color":"#233226"});
+
+
+    function rotTween(to) {
+      var i = d3.interpolate(oldrotation % 360, rotation);
+      return function(t) {
+        return "rotate(" + i(t) + ")";
+      };
+    }
+
+
+    function getRandomNumbers(){
+        var array = new Uint16Array(1000);
+        var scale = d3.scale.linear().range([360, 1440]).domain([0, 100000]);
+
+        if(window.hasOwnProperty("crypto") && typeof window.crypto.getRandomValues === "function"){
+            window.crypto.getRandomValues(array);
+            console.log("works");
+        } else {
+            //no support for crypto, get crappy random numbers
+            for(var i=0; i < 1000; i++){
+                array[i] = Math.floor(Math.random() * 100000) + 1;
+            }
+        }
+
+        return array;
+    }
+
+</script>
+
+</body>
+
+</html>

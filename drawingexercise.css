@@ -1,0 +1,337 @@
+body {
+  margin: 0;
+  background: #a5af8d;
+}
+
+#canvas {
+  width: 300px;
+  height: 400px;
+  margin: 0px auto;
+}
+
+#canvas:hover {
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-name: wobble;
+}
+
+@keyframes wobble {
+  0% {
+    transform: translateX(0%);
+  }
+
+  15% {
+    transform: translateX(-25%) rotate(-5deg);
+  }
+
+  30% {
+    transform: translateX(20%) rotate(3deg);
+  }
+
+  45% {
+    transform: translateX(-15%) rotate(-3deg);
+  }
+
+  60% {
+    transform: translateX(10%) rotate(2deg);
+  }
+
+  75% {
+    transform: translateX(-5%) rotate(-1deg);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+#skin {
+  position: absolute;
+  width: 300px;
+  height: 350px;
+  top: 160px;
+  background: #c48550;
+  border-radius: 20% 20% 50% 50%;
+  box-shadow: inset 0 0 50px #88542c;
+}
+
+#eyebrow1 {
+  position: absolute;
+  width: 30px;
+  height: 10px;
+  background: black;
+  top: 75px;
+  left: 75px;
+  transform: rotate(20deg);
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-name: swing;
+}
+
+@keyframes swing {
+  20% {
+    transform: rotate(20deg);
+  }
+
+  40% {
+    transform: rotate(-10deg);
+  }
+
+  60% {
+    transform: rotate(10deg);
+  }
+
+  80% {
+    transform: rotate(-5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+#eyebrow2 {
+  position: absolute;
+  width: 30px;
+  height: 10px;
+  background: black;
+  top: 75px;
+  right: 75px;
+  transform: rotate(-20deg);
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-name: swing;
+}
+
+@keyframes swing {
+  20% {
+    transform: rotate(-20deg);
+  }
+
+  40% {
+    transform: rotate(10deg);
+  }
+
+  60% {
+    transform: rotate(-10deg);
+  }
+
+  80% {
+    transform: rotate(5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+#eye1 {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #5d3a1a;
+  top: 100px;
+  left: 50px;
+  border-radius: 50% 50% 50% 50%;
+  box-shadow: inset 0 0 20px black;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: pulse;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+#eye2 {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #5d3a1a;
+  top: 100px;
+  right: 50px;
+  border-radius: 50% 50% 50% 50%;
+  box-shadow: inset 0 0 20px black;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: pulse;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+#iris1 {
+  z-index: 1;
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background-color: black;
+  top: 110px;
+  left: 60px;
+  border-radius: 50%;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: pulse;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+#iris2 {
+  z-index: 1;
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background-color: black;
+  top: 110px;
+  right: 60px;
+  border-radius: 50%;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: pulse;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+#pupil1 {
+  z-index: 2;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: white;
+  top: 117px;
+  left: 80px;
+  border-radius: 50%;
+}
+
+#pupil2 {
+  z-index: 2;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: white;
+  top: 117px;
+  right: 80px;
+  border-radius: 50%;
+}
+
+#nose {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: black;
+  border-radius: 40% 40% 40% 40%;
+  box-shadow: inset 0 0 20px black;
+  top: 280px;
+  left: 125px;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: shake;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-2px);
+  }
+
+  20%, 40%, 60%, 80% {
+    transform: translateX(2px);
+  }
+}
+
+
+#ear1 {
+  position: absolute;
+  width: 0;
+	height: 0;
+  border-left: 70px solid transparent;
+	border-right: 70px solid transparent;
+	border-bottom: 150px solid #88542c;
+  transform: rotate(-30deg);
+  right: 206px;
+  top: -105px;
+}
+
+#ear2 {
+  position: absolute;
+  width: 0;
+	height: 0;
+  border-left: 70px solid transparent;
+	border-right: 70px solid transparent;
+	border-bottom: 150px solid #88542c;
+  transform: rotate(30deg);
+  right: -45px;
+  top: -105px;
+}
+
+#earinner1 {
+  position: absolute;
+  width: 0;
+	height: 0;
+  border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-bottom: 120px solid #9f647c;
+  transform: rotate(-30deg);
+  right: 220px;
+  top: -75px;
+}
+
+#earinner2 {
+  position: absolute;
+  width: 0;
+	height: 0;
+  border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-bottom: 120px solid #9f647c;
+  transform: rotate(30deg);
+  right: -20px;
+  top: -75px;
+}

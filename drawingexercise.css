@@ -15,6 +15,27 @@ body {
   animation-name: wobble;
 }
 
+/* unvisited link */
+a:link {
+  color: lightskyblue;
+}
+
+/* visited link */
+a:visited {
+  color: darkseagreen;
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+}
+
+/* selected link */
+a:active {
+  color: lightsteelblue;
+}
+
+
 @keyframes wobble {
   0% {
     transform: translateX(0%);
